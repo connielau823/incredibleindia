@@ -4,80 +4,114 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>North India: The Golden Triangle & Beyond</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{ --sand:#EFE6D8; --ink:#241C15; --maroon:#7A2E2E; --marigold:#C97A2B; --teal:#2F5D57; --line:#C9B79C; --paper:#FBF7F0; }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --sand:#201912; --paper:#1C1610; --ink:#EFE6D8; --line:#4A3E2E; } }
-:root[data-theme="dark"]{ --sand:#201912; --paper:#1C1610; --ink:#EFE6D8; --line:#4A3E2E; }
+:root{
+  --bg:#1A0033; --bg2:#2D0A4E; --ink:#FFF8E7; --pink:#FF2E93; --gold:#FFC93C;
+  --teal:#00C2A8; --orange:#FF6B35; --purple:#7B2FF7; --line:#FFC93C;
+  --paper:#2D0A4E; --card:#3A1160;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#FFF4E0; --bg2:#FFE4EC; --ink:#2D0A4E; --paper:#FFFFFF; --card:#FFFFFF; --line:#FFC93C;
+  }
+}
+:root[data-theme="dark"]{ --bg:#1A0033; --bg2:#2D0A4E; --ink:#FFF8E7; --paper:#2D0A4E; --card:#3A1160; --line:#FFC93C; }
 *{box-sizing:border-box;}
-body{margin:0;background:var(--sand);color:var(--ink);font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;line-height:1.5;}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255,46,147,0.25), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(0,194,168,0.22), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(255,201,60,0.18), transparent 50%),
+    var(--bg);
+  color:var(--ink);
+  font-family:"Poppins",sans-serif;
+  line-height:1.6;
+}
 .wrap{max-width:960px;margin:0 auto;padding:0 20px 80px;}
-header{padding:56px 20px 34px;text-align:left;border-bottom:1px solid var(--line);margin-bottom:8px;}
+
+header{
+  padding:60px 20px 40px;
+  text-align:left;
+  background:linear-gradient(135deg, var(--pink) 0%, var(--purple) 45%, var(--orange) 100%);
+  border-bottom:6px solid var(--gold);
+  margin-bottom:8px;
+  position:relative;
+  overflow:hidden;
+}
+header::before{
+  content:"✦ ✦ ✦";
+  position:absolute; top:14px; right:24px; color:var(--gold); font-size:1.2rem; letter-spacing:12px; opacity:0.8;
+}
 header .wrap{padding:0;}
-.eyebrow-route{font-size:0.95rem;color:var(--marigold);letter-spacing:0.02em;margin:0 0 6px;}
-h1{font-family:"Cormorant Garamond","Iowan Old Style",Georgia,serif;font-weight:600;font-size:clamp(2.4rem,6vw,4rem);margin:0 0 14px;line-height:1.05;}
-.dek{font-size:1.15rem;max-width:62ch;opacity:0.85;margin:0 0 22px;}
-.stat-row{display:flex;gap:32px;flex-wrap:wrap;margin-top:22px;}
-.stat{border-left:2px solid var(--marigold);padding-left:12px;}
-.stat .num{font-size:1.8rem;font-family:"Cormorant Garamond",Georgia,serif;display:block;}
-.stat .lbl{font-size:0.85rem;opacity:0.7;}
+.eyebrow-route{font-family:"Baloo 2",sans-serif; font-size:1rem; color:var(--gold); letter-spacing:0.03em; margin:0 0 8px; font-weight:700; text-shadow:0 2px 0 rgba(0,0,0,0.25);}
+h1{
+  font-family:"Baloo 2",sans-serif; font-weight:800;
+  font-size:clamp(2.6rem,7vw,4.4rem); margin:0 0 14px; line-height:1.02; color:#fff;
+  text-shadow: 3px 3px 0 var(--pink), -1px -1px 0 var(--gold), 0 6px 18px rgba(0,0,0,0.35);
+  letter-spacing:0.01em;
+}
+.dek{font-size:1.15rem;max-width:62ch;color:#fff; opacity:0.95; margin:0 0 22px; font-weight:500;}
+.stat-row{display:flex;gap:20px;flex-wrap:wrap;margin-top:22px;}
+.stat{background:rgba(255,255,255,0.14); backdrop-filter:blur(2px); border:2px solid var(--gold); border-radius:14px; padding:10px 16px;}
+.stat .num{font-size:1.7rem;font-family:"Baloo 2",sans-serif;display:block;color:var(--gold); font-weight:700;}
+.stat .lbl{font-size:0.82rem;opacity:0.9;color:#fff;}
 
-.picker{background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:20px 22px;margin:28px 0 20px;}
-.picker p.ptitle{margin:0 0 12px;font-size:0.95rem;opacity:0.75;}
+.picker{background:var(--card); border:3px solid var(--gold); border-radius:16px; padding:20px 22px;margin:28px 0 20px; box-shadow:0 8px 24px rgba(0,0,0,0.15);}
+.picker p.ptitle{margin:0 0 12px;font-size:0.98rem;opacity:0.85; font-weight:600; color:var(--teal);}
 .picker-options{display:flex;flex-wrap:wrap;gap:10px;}
-.pill{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:2px;padding:9px 14px;cursor:pointer;font-size:0.92rem;user-select:none;background:transparent;}
-.pill input{accent-color:var(--maroon);width:15px;height:15px;}
-.pill.on{border-color:var(--maroon);background:rgba(122,46,46,0.08);}
-.pill .pill-note{opacity:0.6;font-size:0.82rem;}
+.pill{display:flex;align-items:center;gap:8px;border:2px solid var(--pink);border-radius:999px;padding:9px 16px;cursor:pointer;font-size:0.92rem;user-select:none;background:transparent;font-weight:600; color:var(--ink); transition:all 0.15s;}
+.pill input{accent-color:var(--pink);width:15px;height:15px;}
+.pill.on{border-color:var(--gold);background:linear-gradient(90deg, var(--pink), var(--orange));color:#fff;box-shadow:0 4px 12px rgba(255,46,147,0.4);}
+.pill .pill-note{opacity:0.75;font-size:0.8rem;}
 
-.map-panel{background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:18px 18px 8px;margin-bottom:10px;}
-.map-panel .maptitle{margin:0 0 10px;font-size:0.88rem;opacity:0.65;}
-.map-panel svg{width:100%;height:auto;display:block;}
-.map-city-label{font-size:11px;font-family:"Iowan Old Style",Georgia,serif;fill:var(--ink);}
-.map-dot{fill:var(--paper);stroke:var(--maroon);stroke-width:2;}
-.map-dot.active{fill:var(--marigold);stroke:var(--maroon);}
-.map-line{fill:none;stroke:var(--marigold);stroke-width:1.6;stroke-dasharray:4 4;opacity:0.8;}
+.map-panel{background:var(--card); border:3px solid var(--teal); border-radius:16px; padding:18px 18px 8px;margin-bottom:10px; box-shadow:0 8px 24px rgba(0,0,0,0.15);}
+.map-panel .maptitle{margin:0 0 10px;font-size:0.9rem;color:var(--teal); font-weight:700;}
+.map-panel iframe{border-radius:10px;}
 
 .route-strip{display:flex;overflow-x:auto;gap:0;padding:18px 0;margin-bottom:10px;scrollbar-width:thin;}
 .route-node{flex:0 0 auto;display:flex;align-items:center;}
-.route-city{background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:8px 14px;font-size:0.9rem;white-space:nowrap;cursor:pointer;transition:background 0.15s,color 0.15s;}
-.route-city.active{background:var(--maroon);color:#fff;border-color:var(--maroon);}
-.route-arrow{padding:0 10px;color:var(--marigold);font-size:1rem;}
+.route-city{background:var(--card);border:2px solid var(--gold);border-radius:999px;padding:9px 16px;font-size:0.9rem;white-space:nowrap;cursor:pointer;transition:all 0.15s; font-weight:600; color:var(--ink);}
+.route-city.active{background:linear-gradient(90deg, var(--pink), var(--purple)); color:#fff; border-color:var(--gold); box-shadow:0 4px 14px rgba(255,46,147,0.4);}
+.route-arrow{padding:0 10px;color:var(--orange);font-size:1.1rem; font-weight:700;}
 
-nav.days{display:flex;flex-wrap:wrap;gap:8px;padding:18px 0 30px;border-bottom:1px solid var(--line);margin-bottom:34px;}
-nav.days button{font-family:inherit;border:1px solid var(--line);background:transparent;color:var(--ink);padding:8px 13px;border-radius:2px;font-size:0.88rem;cursor:pointer;}
-nav.days button.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
-nav.days button:focus-visible,.route-city:focus-visible,.pill:focus-within{outline:2px solid var(--teal);outline-offset:2px;}
+nav.days{display:flex;flex-wrap:wrap;gap:8px;padding:18px 0 30px;border-bottom:3px dashed var(--gold);margin-bottom:34px;}
+nav.days button{font-family:"Baloo 2",sans-serif;font-weight:600; border:2px solid var(--purple);background:transparent;color:var(--ink);padding:9px 15px;border-radius:999px;font-size:0.9rem;cursor:pointer; transition:all 0.15s;}
+nav.days button.active{background:linear-gradient(90deg, var(--teal), var(--purple));color:#fff;border-color:var(--gold); box-shadow:0 4px 14px rgba(123,47,247,0.4);}
+nav.days button:focus-visible,.route-city:focus-visible,.pill:focus-within{outline:3px solid var(--gold);outline-offset:2px;}
 
 .day{display:none;}
 .day.active{display:block;animation:fade .35s ease;}
 @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 .day-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:6px;}
-.day-head h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:2.1rem;margin:0;font-weight:600;}
-.day-sub{color:var(--marigold);font-size:1rem;}
-.rating-badge{display:inline-block;background:var(--teal);color:#fff;font-size:0.8rem;padding:2px 9px;border-radius:2px;margin-left:8px;font-family:"Iowan Old Style",Georgia,serif;}
-.route-rating{font-size:0.72rem;opacity:0.65;display:block;text-align:center;}
-.day-route{font-size:0.95rem;opacity:0.75;margin:2px 0 26px;}
-.transport-box{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--teal);padding:14px 18px;border-radius:2px;margin-bottom:28px;font-size:0.95rem;}
-.transport-box b{color:var(--teal);font-weight:600;}
-.flight-flag{display:inline-block;background:var(--marigold);color:#fff;font-size:0.72rem;padding:2px 8px;border-radius:2px;margin-left:6px;vertical-align:1px;}
+.day-head h2{font-family:"Baloo 2",sans-serif;font-size:2.2rem;margin:0;font-weight:800; color:var(--pink); text-shadow:2px 2px 0 var(--gold);}
+.day-sub{color:var(--teal);font-size:1rem; font-weight:700;}
+.day-route{font-size:0.95rem;opacity:0.8;margin:2px 0 26px;}
+.transport-box{background:var(--card);border:2px solid var(--orange); border-left:8px solid var(--orange);padding:14px 18px;border-radius:12px;margin-bottom:28px;font-size:0.95rem;}
+.transport-box b{color:var(--orange);font-weight:700;}
+.flight-flag{display:inline-block;background:linear-gradient(90deg, var(--pink), var(--orange));color:#fff;font-size:0.72rem;padding:3px 9px;border-radius:999px;margin-left:6px;vertical-align:1px; font-weight:700;}
+.rating-badge{display:inline-block;background:linear-gradient(90deg, var(--gold), var(--orange));color:#3A1160;font-size:0.72rem;padding:3px 9px;border-radius:999px;margin-left:8px;font-family:"Baloo 2",sans-serif;vertical-align:2px; font-weight:700;}
+.route-rating{font-size:0.72rem;opacity:0.7;display:block;text-align:center;}
 
-.stops{border-top:1px solid var(--line);}
-.stop{display:grid;grid-template-columns:130px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start;}
+.stops{border-top:3px dashed var(--gold);}
+.stop{display:grid;grid-template-columns:130px 1fr;gap:24px;padding:26px 0;border-bottom:2px solid rgba(255,201,60,0.3);align-items:start;}
 @media (max-width:640px){.stop{grid-template-columns:1fr;}}
-.stop-icon{width:130px;height:130px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:52px;}
-@media (max-width:640px){.stop-icon{width:100%;height:100px;}}
-.stop-time{font-size:0.82rem;color:var(--marigold);margin-bottom:4px;}
-.stop h3{margin:0 0 8px;font-size:1.3rem;font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;}
-.stop p{margin:0;font-size:0.97rem;opacity:0.88;}
-.tip{margin-top:34px;font-size:0.9rem;opacity:0.75;border-top:1px dashed var(--line);padding-top:14px;}
-.empty-note{padding:40px 0;opacity:0.7;font-size:0.95rem;}
-footer{text-align:center;font-size:0.85rem;opacity:0.6;padding:40px 0 0;}
+.stop-icon{width:130px;height:130px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:52px; box-shadow:0 6px 16px rgba(0,0,0,0.2);}
+@media (max-width:640px){.stop-icon{width:100%;height:120px;}}
+.stop-time{font-size:0.82rem;color:var(--orange); font-weight:700;margin-bottom:4px;}
+.stop h3{margin:0 0 8px;font-size:1.4rem;font-family:"Baloo 2",sans-serif;font-weight:700; color:var(--ink);}
+.stop p{margin:0;font-size:0.97rem;opacity:0.9;}
+.tip{margin-top:34px;font-size:0.9rem;opacity:0.85;border-top:3px dashed var(--gold);padding-top:14px;}
+.empty-note{padding:40px 0;opacity:0.8;font-size:0.95rem;}
+footer{text-align:center;font-size:0.85rem;opacity:0.75;padding:40px 0 0;}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <p class="eyebrow-route" id="routeLabel">Delhi → Agra → Jaipur → Delhi</p>
+    <p class="eyebrow-route" id="routeLabel">✦ Delhi → Agra → Jaipur → Delhi ✦</p>
     <h1>The Golden Triangle & Beyond</h1>
     <p class="dek">Mughal forts, marble tombs and pink-city bazaars as the core — add a tiger reserve, painted desert havelis, the blue city of Jodhpur, the lake city of Udaipur, the Golden Temple at Amritsar, or the ghats of Varanasi to build your own route.</p>
     <div class="stat-row">
@@ -102,8 +136,8 @@ footer{text-align:center;font-size:0.85rem;opacity:0.6;padding:40px 0 0;}
   </div>
 
   <div class="map-panel">
-    <p class="maptitle">Route map (schematic, not to scale)</p>
-    <svg id="routeMap" viewBox="0 0 580 440" xmlns="http://www.w3.org/2000/svg"></svg>
+    <p class="maptitle">Route map — live Google Maps directions</p>
+    <iframe id="routeMap" style="width:100%;height:420px;border:0;border-radius:2px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 
   <div class="route-strip" id="routeStrip"></div>
@@ -139,6 +173,7 @@ const CONN = {
 const DELHI_FLIGHTS = { "Udaipur":"1h20", "Varanasi":"1h20", "Jodhpur":"1h20", "Amritsar":"1h15" };
 
 function commonsUrl(name){ return "https://commons.wikimedia.org/wiki/Special:FilePath/" + name + "?width=500"; }
+function photoUrl(name){ return name.startsWith("http") ? name : commonsUrl(name); }
 function connectorText(from, to){
   const key = from + "→" + to;
   if(CONN[key]){
@@ -159,17 +194,17 @@ function moduleDelhiArrival(){
      route:"Airport → Old Delhi hotel · no long transfers today",
      transport:"Arrive at Indira Gandhi Intl (DEL). Pre-booked hotel car or airport prepaid taxi into the city (45–60 min depending on traffic). Get around Old Delhi on foot and by cycle-rickshaw — it's too narrow and crowded for a car.",
      stops:[
-       {name:"Jama Masjid", time:"Afternoon", img:"Jama_Masjid_Delhi.jpg", icon:"🕌", desc:"India's largest mosque, built by Shah Jahan in 1656. Climb the south minaret for a rooftop view over Old Delhi's rooftops and kite-flyers.", color:"#7A2E2E"},
-       {name:"Chandni Chowk", time:"Late afternoon", img:"https://static.toiimg.com/thumb/86169252/Chandni-Chowk.jpg?width=636&height=358&resize=4", icon:"🛍️", desc:"The Mughal-era market street below the mosque — spice lanes, silver bazaars, and Old Delhi's oldest paratha and jalebi stalls.", color:"#C97A2B"},
-       {name:"Raj Ghat", time:"Early evening", img:"Raj_Ghat.jpg", icon:"🕯️", desc:"A quiet black marble memorial to Mahatma Gandhi on the spot of his cremation, a calm close to a busy first day.", color:"#2F5D57"}
+       {name:"Jama Masjid", time:"Afternoon", rating:4.5, img:"Jama_Masjid_Delhi.jpg", icon:"🕌", desc:"India's largest mosque, built by Shah Jahan in 1656. Climb the south minaret for a rooftop view over Old Delhi's rooftops and kite-flyers.", color:"#7A2E2E"},
+       {name:"Chandni Chowk", time:"Late afternoon", rating:4.2, img:"https://static.toiimg.com/thumb/86169252/Chandni-Chowk.jpg?width=636&height=358&resize=4", icon:"🛍️", desc:"The Mughal-era market street below the mosque — spice lanes, silver bazaars, and Old Delhi's oldest paratha and jalebi stalls.", color:"#C97A2B"},
+       {name:"Raj Ghat", time:"Early evening", rating:4.4, img:"Raj_Ghat.jpg", icon:"🕯️", desc:"A quiet black marble memorial to Mahatma Gandhi on the spot of his cremation, a calm close to a busy first day.", color:"#2F5D57"}
      ]},
     {mapKey:"Delhi", city:"Delhi", tag:"New Delhi & Humayun's Tomb",
      route:"Full day within New Delhi · car and driver for the day",
      transport:"Hire a car and driver for the day (roughly 8 hours) to move between the spread-out New Delhi sights; traffic makes a fixed daily rate more practical than metering. The Delhi Metro is a fast backup between Qutub Minar and central Delhi.",
      stops:[
-       {name:"Humayun's Tomb", time:"Morning", img:"Humayun%27s_Tomb.jpg", icon:"🏛️", desc:"The garden-tomb that set the template for the Taj Mahal eighty years later — red sandstone and white marble in a formal Persian charbagh garden.", color:"#7A2E2E"},
-       {name:"Qutub Minar", time:"Midday", img:"Qutub_Minar.jpg", icon:"🗼", desc:"A 73-metre soaring victory tower from 1193, the tallest brick minaret in the world.", color:"#C97A2B"},
-       {name:"India Gate & Rashtrapati Bhavan", time:"Late afternoon", img:"India_Gate.jpg", icon:"🏟️", desc:"Lutyens' ceremonial avenue — the war memorial arch at one end, the Presidential Palace at the other. Best light just before sunset.", color:"#2F5D57"}
+       {name:"Humayun's Tomb", time:"Morning", rating:4.6, img:"Humayun%27s_Tomb.jpg", icon:"🏛️", desc:"The garden-tomb that set the template for the Taj Mahal eighty years later — red sandstone and white marble in a formal Persian charbagh garden.", color:"#7A2E2E"},
+       {name:"Qutub Minar", time:"Midday", rating:4.5, img:"Qutub_Minar.jpg", icon:"🗼", desc:"A 73-metre soaring victory tower from 1193, the tallest brick minaret in the world.", color:"#C97A2B"},
+       {name:"India Gate & Rashtrapati Bhavan", time:"Late afternoon", rating:4.4, img:"India_Gate.jpg", icon:"🏟️", desc:"Lutyens' ceremonial avenue — the war memorial arch at one end, the Presidential Palace at the other. Best light just before sunset.", color:"#2F5D57"}
      ]}
   ];
 }
@@ -179,15 +214,15 @@ function moduleAgra(){
      route:"Delhi → Agra · 233 km, ~3.5 hrs by expressway (or 2 hrs by train)",
      transport:"Private car via the Yamuna Expressway (~3.5 hrs, most flexible), or the Gatimaan Express train from Hazrat Nizamuddin (~2 hrs) plus a local taxi in Agra.",
      stops:[
-       {name:"Agra Fort", time:"Afternoon", img:"Agra_Fort.jpg", icon:"🏰", desc:"The red sandstone Mughal citadel where Shah Jahan was later imprisoned by his own son, with a private view of the Taj Mahal from Musamman Burj.", color:"#7A2E2E"},
-       {name:"Mehtab Bagh", time:"Sunset", img:"Mehtab_Bagh.jpg", icon:"🌇", desc:"A quiet garden directly across the river from the Taj — the classic, crowd-free sunset silhouette shot.", color:"#C97A2B"}
+       {name:"Agra Fort", time:"Afternoon", rating:4.6, img:"Agra_Fort.jpg", icon:"🏰", desc:"The red sandstone Mughal citadel where Shah Jahan was later imprisoned by his own son, with a private view of the Taj Mahal from Musamman Burj.", color:"#7A2E2E"},
+       {name:"Mehtab Bagh", time:"Sunset", rating:4.3, img:"Mehtab_Bagh.jpg", icon:"🌇", desc:"A quiet garden directly across the river from the Taj — the classic, crowd-free sunset silhouette shot.", color:"#C97A2B"}
      ]},
     {mapKey:"Agra", city:"Agra → Jaipur", tag:"Taj at sunrise, Fatehpur Sikri, on to Jaipur",
      route:"Agra → Fatehpur Sikri (40 km) → Jaipur (240 km) · full driving day, ~6 hrs total",
      transport:"Private car for the whole day. Arrive at the Taj gates for the 6am opening — the marble changes colour and the crowds are thinnest. Fatehpur Sikri sits directly on the Agra–Jaipur highway.",
      stops:[
-       {name:"Taj Mahal", time:"Sunrise", img:"Taj_Mahal,_Agra,_India.jpg", icon:"🕌", desc:"Shah Jahan's 1632 marble mausoleum for his wife Mumtaz Mahal — go at opening for soft light and near-empty gardens.", color:"#7A2E2E"},
-       {name:"Fatehpur Sikri", time:"Midday", img:"Fatehpur_Sikri.jpg", icon:"🏯", desc:"Akbar's abandoned red-sandstone capital, built and deserted within 15 years for lack of water.", color:"#C97A2B"}
+       {name:"Taj Mahal", time:"Sunrise", rating:4.9, img:"Taj_Mahal,_Agra,_India.jpg", icon:"🕌", desc:"Shah Jahan's 1632 marble mausoleum for his wife Mumtaz Mahal — go at opening for soft light and near-empty gardens.", color:"#7A2E2E"},
+       {name:"Fatehpur Sikri", time:"Midday", rating:4.5, img:"Fatehpur_Sikri.jpg", icon:"🏯", desc:"Akbar's abandoned red-sandstone capital, built and deserted within 15 years for lack of water.", color:"#C97A2B"}
      ]}
   ];
 }
@@ -197,15 +232,15 @@ function moduleJaipur(){
      route:"Full day within Jaipur's old walled city",
      transport:"Walk or cycle-rickshaw within the walled city (Hawa Mahal, City Palace and Jantar Mantar are all within a few hundred metres of each other); keep the car on call for the bazaars outside the walls.",
      stops:[
-       {name:"Hawa Mahal", time:"Morning", img:"Hawa_Mahal.jpg", icon:"🏛️", desc:"The five-storey 'Palace of Winds' honeycomb facade of 953 small windows, built so royal women could watch street life unseen.", color:"#7A2E2E"},
-       {name:"City Palace, Jaipur", time:"Late morning", img:"City_Palace%2C_Jaipur.jpg", icon:"👑", desc:"Still home to the royal family — courtyards, armouries and the Peacock Gate, all in the city's signature pink sandstone.", color:"#C97A2B"},
-       {name:"Jantar Mantar", time:"Afternoon", img:"Jantar_Mantar%2C_Jaipur.jpg", icon:"🔭", desc:"An 18th-century open-air observatory of giant stone astronomical instruments, including the world's largest sundial.", color:"#2F5D57"}
+       {name:"Hawa Mahal", time:"Morning", rating:4.3, img:"Hawa_Mahal.jpg", icon:"🏛️", desc:"The five-storey 'Palace of Winds' honeycomb facade of 953 small windows, built so royal women could watch street life unseen.", color:"#7A2E2E"},
+       {name:"City Palace, Jaipur", time:"Late morning", rating:4.5, img:"City_Palace%2C_Jaipur.jpg", icon:"👑", desc:"Still home to the royal family — courtyards, armouries and the Peacock Gate, all in the city's signature pink sandstone.", color:"#C97A2B"},
+       {name:"Jantar Mantar", time:"Afternoon", rating:4.2, img:"Jantar_Mantar%2C_Jaipur.jpg", icon:"🔭", desc:"An 18th-century open-air observatory of giant stone astronomical instruments, including the world's largest sundial.", color:"#2F5D57"}
      ]},
     {mapKey:"Jaipur", city:"Jaipur", tag:"Amber Fort",
      route:"Amber Fort (11 km from Jaipur)",
      transport:"Morning: car to Amber, 11 km north of Jaipur.",
      stops:[
-       {name:"Amber Fort", time:"Morning", img:"Amber_Fort.jpg", icon:"🏰", desc:"A hilltop Rajput fort-palace above a reflecting lake, famous for the mirrored Sheesh Mahal — arrive early to beat the elephant-ride queues.", color:"#7A2E2E"}
+       {name:"Amber Fort", time:"Morning", rating:4.7, img:"Amber_Fort.jpg", icon:"🏰", desc:"A hilltop Rajput fort-palace above a reflecting lake, famous for the mirrored Sheesh Mahal — arrive early to beat the elephant-ride queues.", color:"#7A2E2E"}
      ]}
   ];
 }
@@ -214,28 +249,28 @@ function moduleRanthambore(){
     {mapKey:"Ranthambore", city:"Ranthambore", tag:"Onward to Ranthambore",
      route:"Jaipur → Ranthambore / Sawai Madhopur", transport:"",
      stops:[
-       {name:"Ranthambore National Park (arrival)", time:"Evening", img:"Ranthambore_National_Park.jpg", icon:"🐅", desc:"Check in near the park gates and book tomorrow's early safari — this reserve has one of India's best odds of a wild tiger sighting.", color:"#2F5D57"}
+       {name:"Ranthambore National Park (arrival)", time:"Evening", rating:4.3, img:"Ranthambore_National_Park.jpg", icon:"🐅", desc:"Check in near the park gates and book tomorrow's early safari — this reserve has one of India's best odds of a wild tiger sighting.", color:"#2F5D57"}
      ]},
     {mapKey:"Ranthambore", city:"Ranthambore → Pushkar", tag:"Tiger safari, then Pushkar",
      route:"Ranthambore → Pushkar · 220 km, ~4.5 hrs",
      transport:"Dawn safari inside the park is by park-authorised jeep or canter, booked in advance. Afterwards, private car west to Pushkar — start right after the morning safari.",
      stops:[
-       {name:"Ranthambore safari", time:"Dawn", img:"Tiger_in_Ranthambhore.jpg", icon:"🐆", desc:"A 3-hour jeep safari through dry deciduous forest and old hunting-lodge ruins, tracking tigers, leopards and marsh crocodiles.", color:"#7A2E2E"},
-       {name:"Pushkar Lake", time:"Evening", img:"Pushkar_Lake.jpg", icon:"🛶", desc:"A holy lake ringed by 52 bathing ghats in a small desert town built around India's only major temple to Brahma.", color:"#C97A2B"}
+       {name:"Ranthambore safari", time:"Dawn", rating:4.8, img:"Tiger_in_Ranthambhore.jpg", icon:"🐆", desc:"A 3-hour jeep safari through dry deciduous forest and old hunting-lodge ruins, tracking tigers, leopards and marsh crocodiles.", color:"#7A2E2E"},
+       {name:"Pushkar Lake", time:"Evening", rating:4.4, img:"Pushkar_Lake.jpg", icon:"🛶", desc:"A holy lake ringed by 52 bathing ghats in a small desert town built around India's only major temple to Brahma.", color:"#C97A2B"}
      ]},
     {mapKey:"Pushkar", city:"Pushkar → Shekhawati", tag:"Pushkar bazaar, on to painted Shekhawati",
      route:"Pushkar → Mandawa, Shekhawati · 190 km, ~4 hrs",
      transport:"Morning on foot around the lake and bazaar. Private car north-east into the Shekhawati region — a rural detour most itineraries skip, worth it for the frescoes alone.",
      stops:[
-       {name:"Brahma Temple, Pushkar", time:"Morning", img:"Brahma_Temple%2C_Pushkar.jpg", icon:"🛕", desc:"One of the very few temples in the world dedicated to Brahma the creator, marked by a red spire visible across town.", color:"#7A2E2E"},
-       {name:"Mandawa havelis", time:"Late afternoon", img:"Mandawa_haveli.jpg", icon:"🎨", desc:"Merchant mansions covered floor to roofline in faded frescoes — trains, gods and colonial gentlemen painted side by side.", color:"#2F5D57"}
+       {name:"Brahma Temple, Pushkar", time:"Morning", rating:4.1, img:"Brahma_Temple%2C_Pushkar.jpg", icon:"🛕", desc:"One of the very few temples in the world dedicated to Brahma the creator, marked by a red spire visible across town.", color:"#7A2E2E"},
+       {name:"Mandawa havelis", time:"Late afternoon", rating:4.4, img:"Mandawa_haveli.jpg", icon:"🎨", desc:"Merchant mansions covered floor to roofline in faded frescoes — trains, gods and colonial gentlemen painted side by side.", color:"#2F5D57"}
      ]},
     {mapKey:"Neemrana", city:"Shekhawati → Neemrana", tag:"Fresco towns, fort-stop at Neemrana",
      route:"Mandawa → Neemrana · 170 km, ~3.5 hrs",
      transport:"Private car toward Neemrana, broken by a stop in Fatehpur Shekhawati. Neemrana Fort-Palace, a restored 15th-century fort, makes a scenic overnight before continuing.",
      stops:[
-       {name:"Fatehpur Shekhawati", time:"Morning", img:"Fatehpur_Shekhawati.jpg", icon:"🎨", desc:"A second, quieter Shekhawati town with some of the region's best-restored haveli frescoes.", color:"#7A2E2E"},
-       {name:"Neemrana Fort-Palace", time:"Evening", img:"Neemrana_Fort.jpg", icon:"🏰", desc:"A cliffside 15th-century fort turned heritage hotel, terraced down a hillside.", color:"#C97A2B"}
+       {name:"Fatehpur Shekhawati", time:"Morning", rating:4.2, img:"Fatehpur_Shekhawati.jpg", icon:"🎨", desc:"A second, quieter Shekhawati town with some of the region's best-restored haveli frescoes.", color:"#7A2E2E"},
+       {name:"Neemrana Fort-Palace", time:"Evening", rating:4.5, img:"Neemrana_Fort.jpg", icon:"🏰", desc:"A cliffside 15th-century fort turned heritage hotel, terraced down a hillside.", color:"#C97A2B"}
      ]}
   ];
 }
@@ -244,14 +279,14 @@ function moduleJodhpur(){
     {mapKey:"Jodhpur", city:"Jodhpur", tag:"Mehrangarh & the Blue City",
      route:"", transport:"",
      stops:[
-       {name:"Mehrangarh Fort", time:"Morning", img:"Mehrangarh_Fort.jpg", icon:"🏰", desc:"One of India's largest forts, towering 120 metres over the city on a sheer rock face, with an excellent museum of Rajput arms and regalia.", color:"#7A2E2E"},
-       {name:"Blue City old town", time:"Afternoon", img:"Jodhpur.jpg", icon:"🔵", desc:"Indigo-washed houses tumbling downhill beneath the fort, best seen from Mehrangarh's ramparts or on foot through the lanes near Ghanta Ghar clock tower.", color:"#2F5D57"}
+       {name:"Mehrangarh Fort", time:"Morning", rating:4.8, img:"Mehrangarh_Fort.jpg", icon:"🏰", desc:"One of India's largest forts, towering 120 metres over the city on a sheer rock face, with an excellent museum of Rajput arms and regalia.", color:"#7A2E2E"},
+       {name:"Blue City old town", time:"Afternoon", rating:4.5, img:"Jodhpur.jpg", icon:"🔵", desc:"Indigo-washed houses tumbling downhill beneath the fort, best seen from Mehrangarh's ramparts or on foot through the lanes near Ghanta Ghar clock tower.", color:"#2F5D57"}
      ]},
     {mapKey:"Jodhpur", city:"Jodhpur", tag:"Jaswant Thada & Umaid Bhawan",
      route:"Half-day around Jodhpur", transport:"Short car hops between sights or a walkable morning near the fort.",
      stops:[
-       {name:"Jaswant Thada", time:"Morning", img:"Jaswant_Thada.jpg", icon:"🕊️", desc:"A milky-white marble royal cenotaph just below the fort, carved thin enough that sunlight filters through the walls.", color:"#C97A2B"},
-       {name:"Umaid Bhawan Palace", time:"Afternoon", img:"Umaid_Bhawan_Palace.jpg", icon:"🏯", desc:"One of the world's largest private residences, part still home to the royal family, part a heritage hotel — visit the small museum wing.", color:"#7A2E2E"}
+       {name:"Jaswant Thada", time:"Morning", rating:4.6, img:"Jaswant_Thada.jpg", icon:"🕊️", desc:"A milky-white marble royal cenotaph just below the fort, carved thin enough that sunlight filters through the walls.", color:"#C97A2B"},
+       {name:"Umaid Bhawan Palace", time:"Afternoon", rating:4.5, img:"Umaid_Bhawan_Palace.jpg", icon:"🏯", desc:"One of the world's largest private residences, part still home to the royal family, part a heritage hotel — visit the small museum wing.", color:"#7A2E2E"}
      ]}
   ];
 }
@@ -260,15 +295,15 @@ function moduleUdaipur(){
     {mapKey:"Udaipur", city:"Udaipur", tag:"Lake Pichola & the City Palace",
      route:"", transport:"",
      stops:[
-       {name:"City Palace, Udaipur", time:"Morning", img:"City_Palace%2C_Udaipur.jpg", icon:"👑", desc:"A honey-coloured hilltop palace complex overlooking Lake Pichola, built up over 400 years by successive Mewar rulers.", color:"#7A2E2E"},
-       {name:"Lake Pichola boat ride", time:"Late afternoon", img:"Lake_Pichola.jpg", icon:"🛶", desc:"A sunset boat crossing to Jag Mandir, the island pleasure-palace, with the City Palace skyline behind you.", color:"#C97A2B"}
+       {name:"City Palace, Udaipur", time:"Morning", rating:4.6, img:"City_Palace%2C_Udaipur.jpg", icon:"👑", desc:"A honey-coloured hilltop palace complex overlooking Lake Pichola, built up over 400 years by successive Mewar rulers.", color:"#7A2E2E"},
+       {name:"Lake Pichola boat ride", time:"Late afternoon", rating:4.7, img:"Lake_Pichola.jpg", icon:"🛶", desc:"A sunset boat crossing to Jag Mandir, the island pleasure-palace, with the City Palace skyline behind you.", color:"#C97A2B"}
      ]},
     {mapKey:"Udaipur", city:"Udaipur", tag:"Monsoon Palace & old city",
      route:"Half-day in and around Udaipur",
      transport:"Car up to Sajjangarh in the morning or for sunset; the old city and ghats are walkable.",
      stops:[
-       {name:"Sajjangarh (Monsoon Palace)", time:"Morning", img:"Sajjangarh_Palace.jpg", icon:"🏯", desc:"A hilltop palace built for the royal family to watch monsoon clouds roll in — now the best panorama over Udaipur and its lakes.", color:"#2F5D57"},
-       {name:"Jagdish Temple & Saheliyon ki Bari", time:"Afternoon", img:"Jagdish_Temple%2C_Udaipur.jpg", icon:"🛕", desc:"A carved 17th-century Indo-Aryan temple in the old city, and a formal garden of fountains built for the ladies of the court.", color:"#7A2E2E"}
+       {name:"Sajjangarh (Monsoon Palace)", time:"Morning", rating:4.4, img:"Sajjangarh_Palace.jpg", icon:"🏯", desc:"A hilltop palace built for the royal family to watch monsoon clouds roll in — now the best panorama over Udaipur and its lakes.", color:"#2F5D57"},
+       {name:"Jagdish Temple & Saheliyon ki Bari", time:"Afternoon", rating:4.2, img:"Jagdish_Temple%2C_Udaipur.jpg", icon:"🛕", desc:"A carved 17th-century Indo-Aryan temple in the old city, and a formal garden of fountains built for the ladies of the court.", color:"#7A2E2E"}
      ]}
   ];
 }
@@ -277,14 +312,14 @@ function moduleVaranasi(){
     {mapKey:"Varanasi", city:"Varanasi", tag:"Arrival & the Ganga Aarti",
      route:"", transport:"",
      stops:[
-       {name:"Dashashwamedh Ghat aarti", time:"Evening", img:"Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG", icon:"🪔", desc:"A nightly fire ritual on the main ghat — priests, oil lamps and drums facing the river, the classic Varanasi welcome.", color:"#7A2E2E"}
+       {name:"Dashashwamedh Ghat aarti", time:"Evening", rating:4.7, img:"Evening_Ganga_Aarti_at_Dashashwamedh_Ghat.JPG", icon:"🪔", desc:"A nightly fire ritual on the main ghat — priests, oil lamps and drums facing the river, the classic Varanasi welcome.", color:"#7A2E2E"}
      ]},
     {mapKey:"Varanasi", city:"Varanasi", tag:"Sunrise on the Ganges & Sarnath",
      route:"Old city, riverfront and a short trip to Sarnath (10 km)",
      transport:"A rowboat is hired directly at the ghats for the sunrise ride; an auto-rickshaw or car covers the short hop out to Sarnath.",
      stops:[
-       {name:"Sunrise boat ride", time:"Dawn", img:"Varanasi_ghats_at_the_sunrise.JPG", icon:"🚣", desc:"Drift past dozens of ghats as the city wakes and bathers greet the sun — the single most-recommended hour in Varanasi.", color:"#C97A2B"},
-       {name:"Sarnath", time:"Midday", img:"Sarnath.jpg", icon:"☸️", desc:"The deer park where the Buddha gave his first sermon after enlightenment, with the 2,300-year-old Dhamek Stupa.", color:"#2F5D57"}
+       {name:"Sunrise boat ride", time:"Dawn", rating:4.8, img:"Varanasi_ghats_at_the_sunrise.JPG", icon:"🚣", desc:"Drift past dozens of ghats as the city wakes and bathers greet the sun — the single most-recommended hour in Varanasi.", color:"#C97A2B"},
+       {name:"Sarnath", time:"Midday", rating:4.3, img:"Sarnath.jpg", icon:"☸️", desc:"The deer park where the Buddha gave his first sermon after enlightenment, with the 2,300-year-old Dhamek Stupa.", color:"#2F5D57"}
      ]}
   ];
 }
@@ -293,15 +328,15 @@ function moduleAmritsar(){
     {mapKey:"Amritsar", city:"Amritsar", tag:"The Golden Temple",
      route:"", transport:"",
      stops:[
-       {name:"Harmandir Sahib (Golden Temple)", time:"Evening", img:"Golden_Temple%2C_Amritsar.jpg", icon:"🛕", desc:"Sikhism's holiest shrine, gilded and floating in its own sacred pool — go at night when the gold dome reflects in the water and the langar hall feeds thousands for free.", color:"#C97A2B"},
-       {name:"Jallianwala Bagh", time:"Late afternoon", img:"Jallianwala_Bagh.jpg", icon:"🕊️", desc:"A walled garden memorial to the 1919 massacre, a short walk from the Golden Temple complex.", color:"#7A2E2E"}
+       {name:"Harmandir Sahib (Golden Temple)", time:"Evening", rating:4.9, img:"Golden_Temple%2C_Amritsar.jpg", icon:"🛕", desc:"Sikhism's holiest shrine, gilded and floating in its own sacred pool — go at night when the gold dome reflects in the water and the langar hall feeds thousands for free.", color:"#C97A2B"},
+       {name:"Jallianwala Bagh", time:"Late afternoon", rating:4.5, img:"Jallianwala_Bagh.jpg", icon:"🕊️", desc:"A walled garden memorial to the 1919 massacre, a short walk from the Golden Temple complex.", color:"#7A2E2E"}
      ]},
     {mapKey:"Amritsar", city:"Amritsar", tag:"Wagah Border & Partition Museum",
      route:"Amritsar city and the Wagah border (28 km)",
      transport:"Car out to Wagah in the late afternoon for the sunset ceremony; the museum and old city are walkable.",
      stops:[
-       {name:"Wagah Border ceremony", time:"Late afternoon", img:"Wagah_-_attari_border_ceremony.jpg", icon:"🎺", desc:"A theatrical, high-kicking flag-lowering ceremony at the India–Pakistan border, watched by cheering crowds on both sides — arrive early for seating.", color:"#2F5D57"},
-       {name:"Partition Museum", time:"Morning", img:"Partition_Museum%2C_Amritsar.jpg", icon:"🏛️", desc:"A moving, well-curated museum on the 1947 Partition, housed in Amritsar's old Town Hall.", color:"#7A2E2E"}
+       {name:"Wagah Border ceremony", time:"Late afternoon", rating:4.4, img:"Wagah_-_attari_border_ceremony.jpg", icon:"🎺", desc:"A theatrical, high-kicking flag-lowering ceremony at the India–Pakistan border, watched by cheering crowds on both sides — arrive early for seating.", color:"#2F5D57"},
+       {name:"Partition Museum", time:"Morning", rating:4.6, img:"Partition_Museum%2C_Amritsar.jpg", icon:"🏛️", desc:"A moving, well-curated museum on the 1947 Partition, housed in Amritsar's old Town Hall.", color:"#7A2E2E"}
      ]}
   ];
 }
@@ -310,7 +345,7 @@ function moduleDeparture(){
     {mapKey:"Delhi", city:"Delhi", tag:"Markets, then the midnight flight home",
      route:"", transport:"",
      stops:[
-       {name:"Dilli Haat / Khan Market", time:"Morning – early evening", img:"Khan_Market.jpg", icon:"🛍️", desc:"A last half-day for Rajasthani textiles, leather and spices — Dilli Haat for craft stalls, Khan Market for a more polished last coffee. Your HKG flight departs Delhi at 12:15am, so plan to be at the airport by ~9:30pm — this is a half-day, not a full one.", color:"#7A2E2E"}
+       {name:"Dilli Haat / Khan Market", time:"Morning – early evening", rating:4.1, img:"Khan_Market.jpg", icon:"🛍️", desc:"A last half-day for Rajasthani textiles, leather and spices — Dilli Haat for craft stalls, Khan Market for a more polished last coffee. Your HKG flight departs Delhi at 12:15am, so plan to be at the airport by ~9:30pm — this is a half-day, not a full one.", color:"#7A2E2E"}
      ]}
   ];
 }
@@ -398,31 +433,22 @@ function renderStats(n, km, cityList){
   document.getElementById('statStops').textContent = new Set(cityList).size;
 }
 
-function renderMap(cityList, activeIdx){
-  const svg = document.getElementById('routeMap');
-  const pts = cityList.map(c => CITY_COORD[c]).filter(Boolean);
-  let lines = "";
-  for(let i=0;i<pts.length-1;i++){
-    lines += `<line class="map-line" x1="${pts[i].x}" y1="${pts[i].y}" x2="${pts[i+1].x}" y2="${pts[i+1].y}"/>`;
+function renderMap(cityList){
+  const iframe = document.getElementById('routeMap');
+  const unique = [];
+  cityList.forEach(c => { if(unique[unique.length-1] !== c) unique.push(c); });
+  const q = unique.map(c => encodeURIComponent(c + ", India"));
+  let src;
+  if(q.length < 2){
+    src = "https://www.google.com/maps?q=" + q[0] + "&output=embed";
+  } else {
+    const origin = q[0];
+    const dest = q[q.length-1];
+    const waypoints = q.slice(1, -1).join("+to:");
+    const daddr = waypoints ? (waypoints + "+to:" + dest) : dest;
+    src = "https://www.google.com/maps?saddr=" + origin + "&daddr=" + daddr + "&output=embed";
   }
-  let dots = "";
-  const uniqueSeen = {};
-  cityList.forEach((c,i)=>{
-    if(uniqueSeen[c] !== undefined) return; // label once per city
-    uniqueSeen[c] = i;
-    const p = CITY_COORD[c]; if(!p) return;
-    dots += `<g data-city="${c}">
-      <circle class="map-dot" cx="${p.x}" cy="${p.y}" r="7"/>
-      <text class="map-city-label" x="${p.x+11}" y="${p.y+4}">${c}</text>
-    </g>`;
-  });
-  svg.innerHTML = lines + dots;
-}
-
-function highlightMap(cityKey){
-  document.querySelectorAll('#routeMap .map-dot').forEach(d=>d.classList.remove('active'));
-  const g = document.querySelector(`#routeMap g[data-city="${cityKey}"]`);
-  if(g) g.querySelector('.map-dot').classList.add('active');
+  iframe.src = src;
 }
 
 function renderRoute(cityList){
@@ -431,8 +457,7 @@ function renderRoute(cityList){
   cityList.forEach((c,i)=>{
     const node = document.createElement('div');
     node.className='route-node';
-    const r = RATINGS[c] ? `<span class="route-rating">★ ${RATINGS[c].toFixed(1)}</span>` : "";
-    node.innerHTML = `<span class="route-city" data-idx="${i}" data-city="${c}">${c}${r}</span>` + (i<cityList.length-1?'<span class="route-arrow">→</span>':'');
+    node.innerHTML = `<span class="route-city" data-idx="${i}" data-city="${c}">${c}</span>` + (i<cityList.length-1?'<span class="route-arrow">→</span>':'');
     strip.appendChild(node);
   });
   strip.querySelectorAll('.route-city').forEach(el=>{
@@ -470,7 +495,7 @@ function renderDays(sequence){
     let stopsHtml = "";
     d.stops.forEach(s=>{
       const photoHtml = s.img
-        ? `<img src="${commonsUrl(s.img)}" alt="${s.name}" loading="lazy" style="width:130px;height:130px;object-fit:cover;border-radius:2px;border:1px solid var(--line);display:block;"
+        ? `<img src="${photoUrl(s.img)}" alt="${s.name}" loading="lazy" style="width:130px;height:130px;object-fit:cover;border-radius:2px;border:1px solid var(--line);display:block;"
              onerror="this.outerHTML='<div class=&quot;stop-icon&quot; style=&quot;background:${s.color}&quot;>${s.icon}</div>'">`
         : `<div class="stop-icon" style="background:${s.color}">${s.icon}</div>`;
       stopsHtml += `
@@ -478,7 +503,7 @@ function renderDays(sequence){
           <div>${photoHtml}</div>
           <div>
             <div class="stop-time">${s.time}</div>
-            <h3>${s.name}</h3>
+            <h3>${s.name}${s.rating ? `<span class="rating-badge">★ ${s.rating.toFixed(1)}</span>` : ""}</h3>
             <p>${s.desc}</p>
           </div>
         </div>`;
@@ -486,7 +511,7 @@ function renderDays(sequence){
     section.innerHTML = `
       <div class="day-head">
         <h2>${d.tag}</h2>
-        <span class="day-sub">Day ${d.dayNum} · ${d.city}${RATINGS[d.mapKey] ? `<span class="rating-badge">★ ${RATINGS[d.mapKey].toFixed(1)}</span>` : ""}</span>
+        <span class="day-sub">Day ${d.dayNum} · ${d.city}</span>
       </div>
       <p class="day-route">${d.route}</p>
       <div class="transport-box"><b>Getting there:</b> ${d.transport}</div>
@@ -499,8 +524,6 @@ function renderDays(sequence){
 function showDay(i){
   document.querySelectorAll('nav.days button').forEach(b=>b.classList.toggle('active', +b.dataset.day===i));
   document.querySelectorAll('.day').forEach(s=>s.classList.toggle('active', s.id==='day-'+i));
-  const seq = window.__seq;
-  if(seq && seq[i]) highlightMap(seq[i].mapKey);
   const el = document.getElementById('day-'+i);
   if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
 }
