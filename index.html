@@ -54,6 +54,8 @@ nav.days button:focus-visible,.route-city:focus-visible,.pill:focus-within{outli
 .day-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:6px;}
 .day-head h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:2.1rem;margin:0;font-weight:600;}
 .day-sub{color:var(--marigold);font-size:1rem;}
+.rating-badge{display:inline-block;background:var(--teal);color:#fff;font-size:0.8rem;padding:2px 9px;border-radius:2px;margin-left:8px;font-family:"Iowan Old Style",Georgia,serif;}
+.route-rating{font-size:0.72rem;opacity:0.65;display:block;text-align:center;}
 .day-route{font-size:0.95rem;opacity:0.75;margin:2px 0 26px;}
 .transport-box{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--teal);padding:14px 18px;border-radius:2px;margin-bottom:28px;font-size:0.95rem;}
 .transport-box b{color:var(--teal);font-weight:600;}
@@ -109,7 +111,7 @@ footer{text-align:center;font-size:0.85rem;opacity:0.6;padding:40px 0 0;}
   <div id="days"></div>
 
   <p class="tip" id="tipText">Route note: drive distances/times are for a private AC car with driver. Add 20–30% to drive times during winter fog (Dec–Jan) on the Delhi–Agra stretch. Legs marked "flight recommended" have no practical direct road option.</p>
-  <footer>Photos are pulled from Wikimedia Commons; a few landmark filenames may not resolve exactly and will show an icon instead.</footer>
+  <footer>Photos are pulled from Wikimedia Commons and may vary in quality — swap in your own by editing the <code>img:</code> filename per stop. Ratings (★) are a general, suggested traveler-consensus score, not live data pulled from any platform.</footer>
 </div>
 
 <script>
@@ -121,6 +123,7 @@ const CITY_COORD = {
   "Varanasi":{x:529,y:361}, "Amritsar":{x:115,y:39}
 };
 
+const RATINGS = {"Delhi": 4.3, "Agra": 4.8, "Jaipur": 4.6, "Ranthambore": 4.6, "Pushkar": 4.4, "Shekhawati": 4.3, "Neemrana": 4.4, "Jodhpur": 4.7, "Udaipur": 4.8, "Varanasi": 4.5, "Amritsar": 4.9};
 // ---------- connection lookup ----------
 const CONN = {
   "Jaipur→Ranthambore":{mode:"Drive",detail:"180 km, ~3.5 hrs by expressway (or the Jaipur–Sawai Madhopur train, ~2 hrs)."},
@@ -428,7 +431,8 @@ function renderRoute(cityList){
   cityList.forEach((c,i)=>{
     const node = document.createElement('div');
     node.className='route-node';
-    node.innerHTML = `<span class="route-city" data-idx="${i}" data-city="${c}">${c}</span>` + (i<cityList.length-1?'<span class="route-arrow">→</span>':'');
+    const r = RATINGS[c] ? `<span class="route-rating">★ ${RATINGS[c].toFixed(1)}</span>` : "";
+    node.innerHTML = `<span class="route-city" data-idx="${i}" data-city="${c}">${c}${r}</span>` + (i<cityList.length-1?'<span class="route-arrow">→</span>':'');
     strip.appendChild(node);
   });
   strip.querySelectorAll('.route-city').forEach(el=>{
@@ -482,7 +486,7 @@ function renderDays(sequence){
     section.innerHTML = `
       <div class="day-head">
         <h2>${d.tag}</h2>
-        <span class="day-sub">Day ${d.dayNum} · ${d.city}</span>
+        <span class="day-sub">Day ${d.dayNum} · ${d.city}${RATINGS[d.mapKey] ? `<span class="rating-badge">★ ${RATINGS[d.mapKey].toFixed(1)}</span>` : ""}</span>
       </div>
       <p class="day-route">${d.route}</p>
       <div class="transport-box"><b>Getting there:</b> ${d.transport}</div>
