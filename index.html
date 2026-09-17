@@ -132,6 +132,11 @@ footer{text-align:center;font-size:0.85rem;opacity:0.75;padding:40px 0 0;}
       <label class="pill" id="pillUda"><input type="checkbox" id="cbUda"> Udaipur <span class="pill-note">+2 days</span></label>
       <label class="pill" id="pillVar"><input type="checkbox" id="cbVar"> Varanasi <span class="pill-note">+2 days</span></label>
       <label class="pill" id="pillAmr"><input type="checkbox" id="cbAmr"> Amritsar, Golden Temple <span class="pill-note">+2 days</span></label>
+      <label class="pill" id="pillKol"><input type="checkbox" id="cbKol"> Kolkata <span class="pill-note">+2 days</span></label>
+      <label class="pill" id="pillDar"><input type="checkbox" id="cbDar"> Darjeeling <span class="pill-note">+2 days</span></label>
+    </div>
+    <div class="picker-options" style="margin-top:12px;">
+      <label class="pill" id="pillDepKol"><input type="checkbox" id="cbDepKol" disabled> Fly home from Kolkata to Hong Kong <span class="pill-note">skips the return to Delhi</span></label>
     </div>
   </div>
 
@@ -154,7 +159,7 @@ const CITY_COORD = {
   "Delhi":{x:233,y:194}, "Agra":{x:274,y:265}, "Jaipur":{x:162,y:280},
   "Ranthambore":{x:193,y:327}, "Pushkar":{x:96,y:301}, "Shekhawati":{x:129,y:222},
   "Neemrana":{x:192,y:225}, "Jodhpur":{x:21,y:312}, "Udaipur":{x:55,y:399},
-  "Varanasi":{x:529,y:361}, "Amritsar":{x:115,y:39}
+  "Varanasi":{x:529,y:361}, "Amritsar":{x:115,y:39}, "Kolkata":{x:820,y:400}, "Darjeeling":{x:800,y:120}
 };
 
 const RATINGS = {"Delhi": 4.3, "Agra": 4.8, "Jaipur": 4.6, "Ranthambore": 4.6, "Pushkar": 4.4, "Shekhawati": 4.3, "Neemrana": 4.4, "Jodhpur": 4.7, "Udaipur": 4.8, "Varanasi": 4.5, "Amritsar": 4.9};
@@ -170,7 +175,10 @@ const CONN = {
   "Jaipur→Delhi":{mode:"Drive",detail:"280 km, ~5 hrs by expressway, or the Shatabdi train (~4.5 hrs), or a 1 hr flight."},
   "Neemrana→Delhi":{mode:"Drive",detail:"120 km, ~2.5 hrs."}
 };
-const DELHI_FLIGHTS = { "Udaipur":"1h20", "Varanasi":"1h20", "Jodhpur":"1h20", "Amritsar":"1h15" };
+const DELHI_FLIGHTS = { "Udaipur":"1h20", "Varanasi":"1h20", "Jodhpur":"1h20", "Amritsar":"1h15", "Kolkata":"2h20" };
+CONN["Varanasi→Kolkata"] = {mode:"Flight", detail:"~1h20, several daily direct flights — one of the best-connected legs on this route."};
+CONN["Kolkata→Darjeeling"] = {mode:"Flight+Drive", detail:"Fly Kolkata → Bagdogra (~1 hr, frequent flights), then a scenic 3 hr drive up into the hills to Darjeeling."};
+CONN["Darjeeling→Delhi"] = {mode:"Flight", detail:"Drive back down to Bagdogra (~3 hrs), then fly Bagdogra → Delhi (~2 hrs)."};
 
 function commonsUrl(name){ return "https://commons.wikimedia.org/wiki/Special:FilePath/" + name + "?width=500"; }
 function photoUrl(name){ return name.startsWith("http") ? name : commonsUrl(name); }
@@ -178,7 +186,7 @@ function connectorText(from, to){
   const key = from + "→" + to;
   if(CONN[key]){
     const c = CONN[key];
-    const flag = c.mode === "Flight" ? '<span class="flight-flag">Flight recommended</span>' : "";
+    const flag = c.mode !== "Drive" ? '<span class="flight-flag">Flight recommended</span>' : "";
     return `<b>${c.mode} from ${from}:</b> ${c.detail}${flag}`;
   }
   if(to === "Delhi" && DELHI_FLIGHTS[from]){
@@ -340,6 +348,52 @@ function moduleAmritsar(){
      ]}
   ];
 }
+function moduleKolkata(){
+  return [
+    {mapKey:"Kolkata", city:"Kolkata", tag:"Colonial Calcutta",
+     route:"", transport:"",
+     stops:[
+       {name:"Victoria Memorial", time:"Morning", rating:4.6, img:"Victoria_Memorial_Kolkata.jpg", icon:"\ud83c\udfdb\ufe0f", desc:"A vast white-marble monument to the British Raj, now a museum, set in manicured gardens in the heart of the city.", color:"#7A2E2E"},
+       {name:"Howrah Bridge & flower market", time:"Afternoon", rating:4.5, img:"Howrah_Bridge.jpg", icon:"\ud83c\udf09", desc:"India's busiest cantilever bridge over the Hooghly River, with the riot-of-colour Mullick Ghat flower market spilling out beneath it at dawn and dusk.", color:"#C97A2B"},
+       {name:"Park Street", time:"Evening", rating:4.3, img:"Park_Street%2C_Kolkata.jpg", icon:"\ud83c\udf7d\ufe0f", desc:"Kolkata's historic dining and nightlife strip, lined with old-school restaurants, bakeries and jazz bars from the city's colonial-era heyday.", color:"#2F5D57"}
+     ]},
+    {mapKey:"Kolkata", city:"Kolkata", tag:"Temples & College Street",
+     route:"Full day within Kolkata", transport:"Walk or take a cycle-rickshaw around College Street; keep a car or taxi on call for Dakshineswar, further north on the riverbank.",
+     stops:[
+       {name:"Dakshineswar Kali Temple", time:"Morning", rating:4.5, img:"Dakshineswar_Kali_Temple.jpg", icon:"\ud83d\udd6f\ufe0f", desc:"A grand riverside temple complex on the Hooghly, famous as the spiritual home of the 19th-century mystic Ramakrishna.", color:"#7A2E2E"},
+       {name:"College Street & Indian Coffee House", time:"Midday", rating:4.4, img:"College_Street%2C_Kolkata.jpg", icon:"\ud83d\udcda", desc:"Asia's largest second-hand book market, a maze of stalls around Kolkata's oldest university buildings, with a break at the century-old Indian Coffee House.", color:"#C97A2B"},
+       {name:"New Market", time:"Afternoon", rating:4.0, img:"New_Market%2C_Kolkata.jpg", icon:"\ud83d\uded2", desc:"A Victorian-era covered bazaar for last-minute shopping — leather, spices, sweets and tailors under one iconic clock tower.", color:"#2F5D57"}
+     ]}
+  ];
+}
+function moduleDarjeeling(){
+  return [
+    {mapKey:"Darjeeling", city:"Darjeeling", tag:"Arrival in the hills",
+     route:"", transport:"",
+     stops:[
+       {name:"Batasia Loop & War Memorial", time:"Afternoon", rating:4.4, img:"Batasia_Loop.jpg", icon:"\ud83c\udf3f", desc:"A spiral railway loop with sweeping Himalayan views and a memorial garden honouring Gorkha soldiers — a gentle first taste of the hill air.", color:"#7A2E2E"},
+       {name:"Mall Road", time:"Evening", rating:4.3, img:"Darjeeling_Mall.jpg", icon:"\ud83c\udfd4\ufe0f", desc:"Darjeeling's pedestrian promenade, lined with cafes, colonial-era buildings and mountain views, busiest at golden hour.", color:"#2F5D57"}
+     ]},
+    {mapKey:"Darjeeling", city:"Darjeeling", tag:"Tiger Hill & the Toy Train",
+     route:"Pre-dawn start for sunrise", transport:"A shared or private jeep collects you before dawn for Tiger Hill; the toy train and tea estate are a short taxi ride from town.",
+     stops:[
+       {name:"Tiger Hill sunrise", time:"Pre-dawn", rating:4.7, img:"Kangchenjunga_from_Tiger_Hill.jpg", icon:"\ud83c\udf05", desc:"The classic pilgrimage for a sunrise view of Kanchenjunga, the world's third-highest peak, lighting up gold over the Himalayan range.", color:"#7A2E2E"},
+       {name:"Darjeeling Himalayan Railway", time:"Morning", rating:4.8, img:"Darjeeling_Himalayan_Railway.jpg", icon:"\ud83d\ude82", desc:"A UNESCO World Heritage \"toy train\" that has climbed these hills since 1881, looping through town on a narrow 2-foot gauge.", color:"#C97A2B"},
+       {name:"Happy Valley Tea Estate", time:"Afternoon", rating:4.3, img:"Happy_Valley_Tea_Estate.jpg", icon:"\ud83c\udf75", desc:"One of Darjeeling's oldest working tea gardens, open for walks through the terraces and a tasting of the region's famous first-flush tea.", color:"#2F5D57"}
+     ]}
+  ];
+}
+CONN["Kolkata→Hong Kong"] = {mode:"Flight", detail:"~4 hrs direct (Cathay Pacific / Hong Kong Airlines fly CCU–HKG most days)."};
+function moduleDepartureKolkata(){
+  return [
+    {mapKey:"Kolkata", city:"Kolkata", tag:"Last morning & the flight home",
+     route:"Kolkata → Hong Kong (direct)",
+     transport:`<b>Flight from Kolkata:</b> ~4 hrs direct, Cathay Pacific / Hong Kong Airlines. No need to route back through Delhi — check CCU–HKG schedules, as frequency is lower than via Delhi.<span class="flight-flag">Flight recommended</span> Keep a car on call for the airport transfer from central Kolkata (~45 min).`,
+     stops:[
+       {name:"Last sweets & a final walk", time:"Morning", rating:4.2, icon:"\ud83c\udf70", desc:"A last stroll and a box of Kolkata's famous rosogolla or sandesh from a College Street or Park Street sweet shop before heading to Netaji Subhas Chandra Bose International Airport.", color:"#C97A2B"}
+     ]}
+  ];
+}
 function moduleDeparture(){
   return [
     {mapKey:"Delhi", city:"Delhi", tag:"Markets, then the midnight flight home",
@@ -356,12 +410,21 @@ function build(){
   const uda = document.getElementById('cbUda').checked;
   const varz = document.getElementById('cbVar').checked;
   const amr = document.getElementById('cbAmr').checked;
+  const kol = document.getElementById('cbKol').checked;
+  const dar = document.getElementById('cbDar').checked;
+  const depKolBox = document.getElementById('cbDepKol');
+  depKolBox.disabled = !kol;
+  if(!kol) depKolBox.checked = false;
+  const depKol = depKolBox.checked;
+  document.getElementById('pillDepKol').classList.toggle('on', depKol);
 
   document.getElementById('pillRan').classList.toggle('on', ran);
   document.getElementById('pillJod').classList.toggle('on', jod);
   document.getElementById('pillUda').classList.toggle('on', uda);
   document.getElementById('pillVar').classList.toggle('on', varz);
   document.getElementById('pillAmr').classList.toggle('on', amr);
+  document.getElementById('pillKol').classList.toggle('on', kol);
+  document.getElementById('pillDar').classList.toggle('on', dar);
 
   let sequence = [...moduleDelhiArrival(), ...moduleAgra(), ...moduleJaipur()];
   let lastCity = "Jaipur";
@@ -398,20 +461,63 @@ function build(){
     sequence = sequence.concat(blk);
     lastCity = "Varanasi"; cityList.push("Varanasi");
   }
-  if(amr){
-    const blk = moduleAmritsar();
-    blk[0].route = `${lastCity} → Amritsar`;
-    blk[0].transport = connectorText(lastCity, "Amritsar");
+  if(depKol && kol){
+    // Ending the trip in Kolkata: visit Amritsar and Darjeeling first, Kolkata last.
+    if(amr){
+      const blk = moduleAmritsar();
+      blk[0].route = `${lastCity} → Amritsar`;
+      blk[0].transport = connectorText(lastCity, "Amritsar");
+      sequence = sequence.concat(blk);
+      lastCity = "Amritsar"; cityList.push("Amritsar");
+    }
+    if(dar){
+      const blk = moduleDarjeeling();
+      blk[0].route = `${lastCity} → Darjeeling`;
+      blk[0].transport = connectorText(lastCity, "Darjeeling");
+      sequence = sequence.concat(blk);
+      lastCity = "Darjeeling"; cityList.push("Darjeeling");
+    }
+    const blk = moduleKolkata();
+    blk[0].route = `${lastCity} → Kolkata`;
+    blk[0].transport = connectorText(lastCity, "Kolkata");
     sequence = sequence.concat(blk);
-    lastCity = "Amritsar"; cityList.push("Amritsar");
+    lastCity = "Kolkata"; cityList.push("Kolkata");
+  } else {
+    if(kol){
+      const blk = moduleKolkata();
+      blk[0].route = `${lastCity} → Kolkata`;
+      blk[0].transport = connectorText(lastCity, "Kolkata");
+      sequence = sequence.concat(blk);
+      lastCity = "Kolkata"; cityList.push("Kolkata");
+    }
+    if(dar){
+      const blk = moduleDarjeeling();
+      blk[0].route = `${lastCity} → Darjeeling`;
+      blk[0].transport = connectorText(lastCity, "Darjeeling");
+      sequence = sequence.concat(blk);
+      lastCity = "Darjeeling"; cityList.push("Darjeeling");
+    }
+    if(amr){
+      const blk = moduleAmritsar();
+      blk[0].route = `${lastCity} → Amritsar`;
+      blk[0].transport = connectorText(lastCity, "Amritsar");
+      sequence = sequence.concat(blk);
+      lastCity = "Amritsar"; cityList.push("Amritsar");
+    }
   }
-  const dep = moduleDeparture();
-  dep[0].route = lastCity === "Delhi" ? "Free morning in Delhi → airport" : `${lastCity} → Delhi, then airport`;
-  dep[0].transport = (lastCity === "Delhi")
-    ? "Keep the car on call for last shopping and the airport transfer; budget 45–60 min to Indira Gandhi Intl outside rush hour."
-    : connectorText(lastCity, "Delhi") + " Then keep a car on call in Delhi for last shopping and the airport transfer.";
-  sequence = sequence.concat(dep);
-  cityList.push("Delhi");
+  if(depKol && kol){
+    const dep = moduleDepartureKolkata();
+    sequence = sequence.concat(dep);
+    // no return to Delhi — trip ends in Kolkata
+  } else {
+    const dep = moduleDeparture();
+    dep[0].route = lastCity === "Delhi" ? "Free morning in Delhi → airport" : `${lastCity} → Delhi, then airport`;
+    dep[0].transport = (lastCity === "Delhi")
+      ? "Keep the car on call for last shopping and the airport transfer; budget 45–60 min to Indira Gandhi Intl outside rush hour."
+      : connectorText(lastCity, "Delhi") + " Then keep a car on call in Delhi for last shopping and the airport transfer.";
+    sequence = sequence.concat(dep);
+    cityList.push("Delhi");
+  }
 
   sequence.forEach((d,i)=>{ d.dayNum = i+1; });
 
@@ -533,6 +639,9 @@ document.getElementById('cbJod').addEventListener('change', build);
 document.getElementById('cbUda').addEventListener('change', build);
 document.getElementById('cbVar').addEventListener('change', build);
 document.getElementById('cbAmr').addEventListener('change', build);
+document.getElementById('cbKol').addEventListener('change', build);
+document.getElementById('cbDar').addEventListener('change', build);
+document.getElementById('cbDepKol').addEventListener('change', build);
 
 build();
 </script>
